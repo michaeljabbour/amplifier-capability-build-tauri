@@ -1,8 +1,6 @@
-# Tauri 2.0 Skills
+# amplifier-tauri-skill
 
-Generic [Tauri 2.0](https://tauri.app/) development skills for AI coding assistants.
-These skills teach standard Tauri project structure, IPC patterns, and sidecar
-integration -- not specific to any one Tauri app.
+Generic [Tauri 2.0](https://tauri.app/) development skills for AI coding assistants. These skills teach standard Tauri project structure, IPC patterns, and sidecar integration -- not specific to any one Tauri app.
 
 ## Skills Included
 
@@ -12,34 +10,49 @@ integration -- not specific to any one Tauri app.
 | `tauri2-ipc-patterns` | Commands, events, invoke between Rust and frontend |
 | `tauri2-sidecar-integration` | Managing sidecar processes: spawn, health check, communication |
 
-## Install
+## Install from GitHub
 
-### Global Installation (All Amplifier Instances)
+### Amplifier (CLI or Desktop)
 
-To make these skills available to **every** Amplifier instance (CLI, Desktop,
-any tool) regardless of which project you're working in, install each skill
-into `~/.amplifier/skills/`.
+**Option A -- Git skill source (recommended, survives updates):**
 
-> **Why not directory symlinks?** Python's `pathlib.glob("**")` does not follow
-> symlinked directories during recursive traversal. Use real directories with
-> file symlinks instead — glob follows file symlinks just fine.
+Add to your bundle YAML or `desktop.yaml`:
+
+```yaml
+tools:
+  - module: tool-skills
+    config:
+      skills:
+        - "git+https://github.com/michaeljabbour/amplifier-tauri-skill@main"
+```
+
+Skills are fetched from GitHub automatically. This config lives in your bundle
+file, not in the Amplifier cache, so it survives `amplifier update`.
+
+**Option B -- Clone and symlink for global access:**
 
 ```bash
-# Clone the repo (if you haven't already)
+# 1. Clone
 git clone https://github.com/michaeljabbour/amplifier-tauri-skill.git ~/dev/amplifier-tauri-skill
 
-# Create the global skills directory
+# 2. Install into ~/.amplifier/skills/ (survives all updates)
 mkdir -p ~/.amplifier/skills
-
-# Create real directories with file symlinks to each SKILL.md
 for skill in tauri2-project-structure tauri2-ipc-patterns tauri2-sidecar-integration; do
   mkdir -p ~/.amplifier/skills/$skill
   ln -sf ~/dev/amplifier-tauri-skill/$skill/SKILL.md ~/.amplifier/skills/$skill/SKILL.md
 done
 ```
 
-After this, any Amplifier session can run `load_skill("tauri2-ipc-patterns")`
-from any project directory.
+Now any Amplifier session can `load_skill("tauri2-ipc-patterns")` from any
+project. Update skills anytime with `cd ~/dev/amplifier-tauri-skill && git pull`.
+
+> **Why file symlinks?** `pathlib.glob("**")` doesn't follow symlinked
+> directories, but follows file symlinks fine.
+
+### Kepler Desktop
+
+Already configured -- skills are wired into Kepler's `desktop.yaml` via the
+`behaviors/skills.yaml` behavior bundle. Nothing to install.
 
 ### Claude Code
 
@@ -47,66 +60,60 @@ from any project directory.
 claude skill add https://github.com/michaeljabbour/amplifier-tauri-skill
 ```
 
-You can also point Claude Code at individual skill files:
+Or reference individual skills directly:
+
 ```
 Read ~/dev/amplifier-tauri-skill/tauri2-ipc-patterns/SKILL.md for Tauri 2.0
 IPC patterns, then review my invoke handler.
 ```
 
-### Bundle YAML Configuration
+### Other Tools (Cursor, Warp, etc.)
 
-Add to your project's bundle YAML to make skills available per-project:
+```bash
+git clone https://github.com/michaeljabbour/amplifier-tauri-skill.git
+```
+
+Point your tool at the `SKILL.md` files in each subdirectory.
+
+## Related Skill Repos
+
+These three repos layer on top of each other:
+
+```
+amplifier-skill            -- Core Amplifier patterns (delegation, CLI, agents)
+amplifier-kepler-skill     -- Kepler-specific (desktop distribution)
+amplifier-tauri-skill      -- Generic Tauri 2.0 (this repo)
+```
+
+Install all three for full-stack Kepler development:
 
 ```yaml
+# In your bundle YAML (git sources -- always up to date)
 tools:
   - module: tool-skills
     config:
-      skills_dirs:
-        - ~/dev/amplifier-tauri-skill
+      skills:
+        - "git+https://github.com/michaeljabbour/amplifier-skill@main"
+        - "git+https://github.com/michaeljabbour/amplifier-kepler-skill@main"
+        - "git+https://github.com/michaeljabbour/amplifier-tauri-skill@main"
 ```
 
-### Manual Install
-
-```bash
-git clone https://github.com/michaeljabbour/amplifier-tauri-skill ~/dev/amplifier-tauri-skill
-# Reference the SKILL.md files directly in your tool's context
-```
-
-## Relationship to Other Skill Repos
-
-These three skill repositories layer on top of each other:
-
-```
-amplifier-skill            — Core Amplifier patterns (delegation, CLI, agents)
-amplifier-kepler-skill     — Kepler-specific skills (desktop distribution)
-amplifier-tauri-skill      — Generic Tauri 2.0 development skills (this repo)
-```
-
-- **`amplifier-skill`** provides universal Amplifier knowledge: how delegation
-  works, CLI discovery, agent catalog, module contracts.
-- **`amplifier-kepler-skill`** provides Kepler-specific knowledge: concentric
-  rings architecture, bundle composition, sidecar lifecycle, desktop
-  distribution concerns.
-- **`amplifier-tauri-skill`** (this repo) provides generic Tauri 2.0 knowledge:
-  project structure, IPC patterns, sidecar integration. Not Kepler-specific --
-  useful for any Tauri app.
-
-To install all three globally:
+Or clone and symlink all three globally:
 
 ```bash
 mkdir -p ~/.amplifier/skills
 
-# Core Amplifier skill (real dir + file symlink)
+# amplifier-skill (single skill at repo root)
 mkdir -p ~/.amplifier/skills/amplifier-skill
 ln -sf ~/dev/amplifier-skill/SKILL.md ~/.amplifier/skills/amplifier-skill/SKILL.md
 
-# Kepler skills
+# kepler skills (4 skills)
 for skill in kepler-architecture kepler-dev-setup kepler-sidecar-patterns kepler-bundle-composition; do
   mkdir -p ~/.amplifier/skills/$skill
   ln -sf ~/dev/amplifier-kepler-skill/$skill/SKILL.md ~/.amplifier/skills/$skill/SKILL.md
 done
 
-# Tauri skills
+# tauri skills (3 skills)
 for skill in tauri2-project-structure tauri2-ipc-patterns tauri2-sidecar-integration; do
   mkdir -p ~/.amplifier/skills/$skill
   ln -sf ~/dev/amplifier-tauri-skill/$skill/SKILL.md ~/.amplifier/skills/$skill/SKILL.md
@@ -118,6 +125,7 @@ done
 ```text
 .
 ├── README.md
+├── .gitignore
 ├── tauri2-project-structure/
 │   └── SKILL.md
 ├── tauri2-ipc-patterns/
