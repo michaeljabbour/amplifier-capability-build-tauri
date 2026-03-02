@@ -12,11 +12,22 @@ Generic [Tauri 2.0](https://tauri.app/) development skills for AI coding assista
 
 ## Install from GitHub
 
-### Amplifier (CLI or Desktop)
+### Quick Install (Amplifier + Claude Code)
 
-**Option A -- Git skill source (recommended, survives updates):**
+```bash
+git clone https://github.com/michaeljabbour/amplifier-tauri-skill.git ~/dev/amplifier-tauri-skill
+cd ~/dev/amplifier-tauri-skill
+./install.sh
+```
 
-Add to your bundle YAML or `desktop.yaml`:
+This creates symlinks in both `~/.amplifier/skills/` and `~/.claude/skills/`,
+so every Amplifier session and every Claude Code session sees the same skills.
+Update anytime with `git pull` — symlinks mean both tools pick up changes
+instantly.
+
+### Amplifier Bundle YAML (alternative)
+
+If you prefer git-sourced skills fetched on the fly:
 
 ```yaml
 tools:
@@ -26,46 +37,9 @@ tools:
         - "git+https://github.com/michaeljabbour/amplifier-tauri-skill@main"
 ```
 
-Skills are fetched from GitHub automatically. This config lives in your bundle
-file, not in the Amplifier cache, so it survives `amplifier update`.
-
-**Option B -- Clone and symlink for global access:**
-
-```bash
-# 1. Clone
-git clone https://github.com/michaeljabbour/amplifier-tauri-skill.git ~/dev/amplifier-tauri-skill
-
-# 2. Install into ~/.amplifier/skills/ (survives all updates)
-mkdir -p ~/.amplifier/skills
-for skill in tauri2-project-structure tauri2-ipc-patterns tauri2-sidecar-integration; do
-  mkdir -p ~/.amplifier/skills/$skill
-  ln -sf ~/dev/amplifier-tauri-skill/$skill/SKILL.md ~/.amplifier/skills/$skill/SKILL.md
-done
-```
-
-Now any Amplifier session can `load_skill("tauri2-ipc-patterns")` from any
-project. Update skills anytime with `cd ~/dev/amplifier-tauri-skill && git pull`.
-
-> **Why file symlinks?** `pathlib.glob("**")` doesn't follow symlinked
-> directories, but follows file symlinks fine.
-
 ### Kepler Desktop
 
-Already configured -- skills are wired into Kepler's `desktop.yaml` via the
-`behaviors/skills.yaml` behavior bundle. Nothing to install.
-
-### Claude Code
-
-```bash
-claude skill add https://github.com/michaeljabbour/amplifier-tauri-skill
-```
-
-Or reference individual skills directly:
-
-```
-Read ~/dev/amplifier-tauri-skill/tauri2-ipc-patterns/SKILL.md for Tauri 2.0
-IPC patterns, then review my invoke handler.
-```
+Already configured via `behaviors/skills.yaml`. Nothing to install.
 
 ### Other Tools (Cursor, Warp, etc.)
 
