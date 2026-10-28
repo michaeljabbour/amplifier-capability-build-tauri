@@ -1,3 +1,5 @@
+> Preserved source method from `amplifier-tauri-skill` at `622249013ca64c725a79542184aec02b70f85c2b`. Original examples and runtime claims are historical; the canonical entry point defines current scope.
+
 ---
 name: tauri2-project-structure
 description: Use when working on a Tauri 2.0 project to understand the standard layout, Cargo conventions, plugin system, and where different code belongs.

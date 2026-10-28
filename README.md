@@ -1,109 +1,33 @@
-# amplifier-tauri-skill
+# Build with Tauri
 
-Generic [Tauri 2.0](https://tauri.app/) development skills for AI coding assistants. These skills teach standard Tauri project structure, IPC patterns, and sidecar integration -- not specific to any one Tauri app.
+Build a desktop app whose frontend and sidecar agree.
 
-## Skills Included
+Developers working across a Tauri webview, Rust shell, and optional companion process. Use when creating or repairing Tauri 2 project structure, IPC, permissions, or sidecar lifecycle.
 
-| Skill | Description |
-|-------|-------------|
-| `tauri2-project-structure` | Standard Tauri 2.0 layout, Cargo conventions, plugin system |
-| `tauri2-ipc-patterns` | Commands, events, invoke between Rust and frontend |
-| `tauri2-sidecar-integration` | Managing sidecar processes: spawn, health check, communication |
+## Install the portable method
 
-## Install from GitHub
-
-### Quick Install (Amplifier + Claude Code)
-
-```bash
-git clone https://github.com/michaeljabbour/amplifier-tauri-skill.git ~/dev/amplifier-tauri-skill
-cd ~/dev/amplifier-tauri-skill
-./install.sh
+```sh
+python3 scripts/capability.py doctor
+python3 scripts/capability.py install --dest ~/.agents/skills
 ```
 
-This creates symlinks in both `~/.amplifier/skills/` and `~/.claude/skills/`,
-so every Amplifier session and every Claude Code session sees the same skills.
-Update anytime with `git pull` — symlinks mean both tools pick up changes
-instantly.
+Keep the complete `skills/build-tauri` folder together. Installation copies only that method, references, and license; it starts no service and installs no runtime. Use a different skills-parent path for your host.
 
-### Amplifier Bundle YAML (alternative)
+## Choose the mode
 
-If you prefer git-sourced skills fetched on the fly:
+- **Structure** — The app layout, target platforms, or build boundary is unclear. A versioned map of frontend, Rust shell, capabilities, and packaged binaries.
+- **IPC** — A frontend action needs Rust data, progress, or an error. A typed command/channel/event contract with lifecycle and permission checks.
+- **Sidecar** — A companion process must start, serve, recover, and stop. An explicit readiness, ownership, failure, and cleanup contract.
 
-```yaml
-tools:
-  - module: tool-skills
-    config:
-      skills:
-        - "git+https://github.com/michaeljabbour/amplifier-tauri-skill@main"
+## What was consolidated
+
+[Migration map](docs/MIGRATION.md) records the original source paths and current roles. Primary Git history, native engines, tests, examples, and evaluation assets remain in this checkout. [Native guide](docs/NATIVE-README.md) preserves the original project documentation; old install URLs and runtime claims there are historical and need current verification. [Validation](docs/VALIDATION.md) records actual checks and limits.
+
+## Build the local site
+
+```sh
+python3 scripts/capability.py build
+python3 scripts/capability.py check
 ```
 
-### Kepler Desktop
-
-Already configured via `behaviors/skills.yaml`. Nothing to install.
-
-### Other Tools (Cursor, Warp, etc.)
-
-```bash
-git clone https://github.com/michaeljabbour/amplifier-tauri-skill.git
-```
-
-Point your tool at the `SKILL.md` files in each subdirectory.
-
-## Related Skill Repos
-
-These three repos layer on top of each other:
-
-```
-amplifier-skill            -- Core Amplifier patterns (delegation, CLI, agents)
-amplifier-kepler-skill     -- Kepler-specific (desktop distribution)
-amplifier-tauri-skill      -- Generic Tauri 2.0 (this repo)
-```
-
-Install all three for full-stack Kepler development:
-
-```yaml
-# In your bundle YAML (git sources -- always up to date)
-tools:
-  - module: tool-skills
-    config:
-      skills:
-        - "git+https://github.com/michaeljabbour/amplifier-skill@main"
-        - "git+https://github.com/michaeljabbour/amplifier-kepler-skill@main"
-        - "git+https://github.com/michaeljabbour/amplifier-tauri-skill@main"
-```
-
-Or clone and symlink all three globally:
-
-```bash
-mkdir -p ~/.amplifier/skills
-
-# amplifier-skill (single skill at repo root)
-mkdir -p ~/.amplifier/skills/amplifier-skill
-ln -sf ~/dev/amplifier-skill/SKILL.md ~/.amplifier/skills/amplifier-skill/SKILL.md
-
-# kepler skills (4 skills)
-for skill in kepler-architecture kepler-dev-setup kepler-sidecar-patterns kepler-bundle-composition; do
-  mkdir -p ~/.amplifier/skills/$skill
-  ln -sf ~/dev/amplifier-kepler-skill/$skill/SKILL.md ~/.amplifier/skills/$skill/SKILL.md
-done
-
-# tauri skills (3 skills)
-for skill in tauri2-project-structure tauri2-ipc-patterns tauri2-sidecar-integration; do
-  mkdir -p ~/.amplifier/skills/$skill
-  ln -sf ~/dev/amplifier-tauri-skill/$skill/SKILL.md ~/.amplifier/skills/$skill/SKILL.md
-done
-```
-
-## Repository Layout
-
-```text
-.
-├── README.md
-├── .gitignore
-├── tauri2-project-structure/
-│   └── SKILL.md
-├── tauri2-ipc-patterns/
-│   └── SKILL.md
-└── tauri2-sidecar-integration/
-    └── SKILL.md
-```
+Open `_site/index.html` or serve `_site` with a local static server. The downloadable ZIP is built from canonical method bytes. The fictional before/after example illustrates intended judgment; it is not a measured improvement. Nothing has been published or renamed remotely.

@@ -1,0 +1,13 @@
+[
+  {
+    "repo": "amplifier-tauri-skill",
+    "commit": "622249013ca64c725a79542184aec02b70f85c2b",
+    "paths": [
+      "tauri2-project-structure/SKILL.md",
+      "tauri2-sidecar-integration/SKILL.md",
+      "tauri2-ipc-patterns/SKILL.md"
+    ],
+    "license": "MIT License",
+    "role": "Primary history and engine retained; methods consolidated behind the canonical portable entry."
+  }
+]

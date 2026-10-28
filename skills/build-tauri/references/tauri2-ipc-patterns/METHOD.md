@@ -1,3 +1,5 @@
+> Preserved source method from `amplifier-tauri-skill` at `622249013ca64c725a79542184aec02b70f85c2b`. Original examples and runtime claims are historical; the canonical entry point defines current scope.
+
 ---
 name: tauri2-ipc-patterns
 description: Use when implementing communication between Rust backend and web frontend in Tauri 2.0 — commands, events, and invoke patterns.

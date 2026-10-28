@@ -1,3 +1,5 @@
+> Preserved source method from `amplifier-tauri-skill` at `622249013ca64c725a79542184aec02b70f85c2b`. Original examples and runtime claims are historical; the canonical entry point defines current scope.
+
 ---
 name: tauri2-sidecar-integration
 description: Use when managing sidecar processes in Tauri 2.0 — spawning, health checking, communicating with, and gracefully shutting down companion processes.
