@@ -1,33 +1,68 @@
 # Build with Tauri
 
-Build a desktop app whose frontend and sidecar agree.
+Make the desktop app work beyond the dev server.
 
-Developers working across a Tauri webview, Rust shell, and optional companion process. Use when creating or repairing Tauri 2 project structure, IPC, permissions, or sidecar lifecycle.
+A Tauri 2 development skill for the boundary between webview, Rust and companion processes. Turn “it opens” into clear contracts for requests, streaming, permissions and shutdown.
 
-## Install the portable method
+[Explore the site](https://michaeljabbour.github.io/amplifier-skill-build-tauri/) · [Read the method](skills/build-tauri/SKILL.md) · [Install guide](docs/INSTALL.md)
+
+## What you get
+
+- **Make frontend and Rust agree.** Specify command names, argument casing, serialized results and error handling before debugging both sides at once.
+- **Know when a sidecar is ready.** Use a bounded readiness check, an owned child handle and explicit failure recovery.
+- **Check the app people install.** Separate source checks, mocked IPC, the running desktop app and the packaged release.
+
+## Install and try it
+
+Requires Git and Python 3.11+. Run these commands from a terminal:
 
 ```sh
+git clone https://github.com/michaeljabbour/amplifier-skill-build-tauri.git
+cd amplifier-skill-build-tauri
 python3 scripts/capability.py doctor
 python3 scripts/capability.py install --dest ~/.agents/skills
 ```
 
-Keep the complete `skills/build-tauri` folder together. Installation copies only that method, references, and license; it starts no service and installs no runtime. Use a different skills-parent path for your host.
+The installer copies `skills/build-tauri` as a complete folder into your chosen skills parent. Use the discovery path supported by your agent. It starts no service and configures no provider. Restart or refresh skill discovery in your host, then ask:
 
-## Choose the mode
+```text
+Use Build with Tauri on this Tauri 2 app. Its import sidecar starts slowly and the first request fails. Trace startup, define readiness and shutdown ownership, and propose the smallest fix with target-OS checks.
+```
 
-- **Structure** — The app layout, target platforms, or build boundary is unclear. A versioned map of frontend, Rust shell, capabilities, and packaged binaries.
-- **IPC** — A frontend action needs Rust data, progress, or an error. A typed command/channel/event contract with lifecycle and permission checks.
-- **Sidecar** — A companion process must start, serve, recover, and stop. An explicit readiness, ownership, failure, and cleanup contract.
+If your agent does not discover installed skills, point it directly at the complete folder and ask it to read `SKILL.md`. Reading the method needs no Python runtime. [Installation details](docs/INSTALL.md) cover conflict handling and optional native execution.
 
-## What was consolidated
+## How the work proceeds
+
+1. **Map the app.** Inspect lockfiles, configuration, capabilities, Rust entrypoints and target operating system.
+2. **Define the boundary.** Choose request/response, channel or event behavior; declare permissions and lifecycle ownership.
+3. **Exercise the failure paths.** Test wrong fields, startup failure, repeated launch, cancellation and app exit before checking release packaging.
+
+## Example output
+
+Fictional worked example. It illustrates the intended output; it is not a measured result or a real customer story.
+
+```text
+Fictional contract: import sidecar
+Ready: expected versioned health response before deadline
+Startup failure: show reason, retry and cancel
+Owner: application retains child handle
+Exit: graceful stop, then bounded kill fallback
+Release check: correct target-triple binary included
+```
+
+## What is checked
+
+The retained references were reviewed against the linked official Tauri 2 contracts, and the portable package is checked. No desktop executable is supplied; operating-system lifecycle and release packaging must be tested in your app. See [validation](docs/VALIDATION.md) for the exact checks and limits.
+
+## Retained implementation and references
 
 [Migration map](docs/MIGRATION.md) records the original source paths and current roles. Primary Git history, native engines, tests, examples, and evaluation assets remain in this checkout. [Native guide](docs/NATIVE-README.md) preserves the original project documentation; old install URLs and runtime claims there are historical and need current verification. [Validation](docs/VALIDATION.md) records actual checks and limits.
 
-## Build the local site
+## Build the site
 
 ```sh
 python3 scripts/capability.py build
 python3 scripts/capability.py check
 ```
 
-Open `_site/index.html` or serve `_site` with a local static server. The downloadable ZIP is built from canonical method bytes. The fictional before/after example illustrates intended judgment; it is not a measured improvement. Nothing has been published or renamed remotely.
+The static site includes a ZIP built from the canonical method, references and license. Runtime and provider setup remain separate from installing the portable method.

@@ -103,6 +103,58 @@
     "docs/NATIVE-README.md",
     "docs/evaluations/2026-10-28/consolidation.json"
   ],
-  "evidence_summary": "This local candidate preserves the original source and evaluation assets. Packaging and native software checks are recorded separately from comparative usefulness. No outside-user outcome or renamed-method effectiveness claim is established.",
-  "publication_status": "Installation and evidence scopes are documented below."
+  "evidence_summary": "The retained references were reviewed against the linked official Tauri 2 contracts, and the portable package is checked. No desktop executable is supplied; operating-system lifecycle and release packaging must be tested in your app.",
+  "publication_status": "Installation and evidence scopes are documented below.",
+  "marketing": {
+    "headline": "Make the desktop app work beyond the dev server.",
+    "lead": "A Tauri 2 development skill for the boundary between webview, Rust and companion processes. Turn “it opens” into clear contracts for requests, streaming, permissions and shutdown.",
+    "benefits": [
+      {
+        "title": "Make frontend and Rust agree",
+        "body": "Specify command names, argument casing, serialized results and error handling before debugging both sides at once."
+      },
+      {
+        "title": "Know when a sidecar is ready",
+        "body": "Use a bounded readiness check, an owned child handle and explicit failure recovery."
+      },
+      {
+        "title": "Check the app people install",
+        "body": "Separate source checks, mocked IPC, the running desktop app and the packaged release."
+      }
+    ],
+    "walkthrough": [
+      {
+        "title": "Map the app",
+        "detail": "Inspect lockfiles, configuration, capabilities, Rust entrypoints and target operating system."
+      },
+      {
+        "title": "Define the boundary",
+        "detail": "Choose request/response, channel or event behavior; declare permissions and lifecycle ownership."
+      },
+      {
+        "title": "Exercise the failure paths",
+        "detail": "Test wrong fields, startup failure, repeated launch, cancellation and app exit before checking release packaging."
+      }
+    ],
+    "use_when": [
+      "A frontend command reaches Rust with the wrong arguments.",
+      "A companion process starts but is not ready for requests.",
+      "The dev app works while the packaged desktop build fails."
+    ],
+    "not_for": [
+      "A bundled desktop executable or cross-platform acceptance certificate.",
+      "A reason to broaden permissions before inspecting the relevant application or plugin rules."
+    ],
+    "quickstart_prompt": "Use Build with Tauri on this Tauri 2 app. Its import sidecar starts slowly and the first request fails. Trace startup, define readiness and shutdown ownership, and propose the smallest fix with target-OS checks.",
+    "output_preview": "Fictional contract: import sidecar\nReady: expected versioned health response before deadline\nStartup failure: show reason, retry and cancel\nOwner: application retains child handle\nExit: graceful stop, then bounded kill fallback\nRelease check: correct target-triple binary included",
+    "proof_summary": "The retained references were reviewed against the linked official Tauri 2 contracts, and the portable package is checked. No desktop executable is supplied; operating-system lifecycle and release packaging must be tested in your app.",
+    "next_step": "Bring the app, target operating system and one failure you can reproduce.",
+    "example_note": "Fictional worked example. It illustrates the intended output; it is not a measured result or a real customer story.",
+    "install_notes": [
+      "Requires Git and Python 3.11+ for the repository installer. The portable method itself can be read by a compatible agent without a service or provider account.",
+      "The destination is a skills-parent folder. Use the discovery path supported by your agent; ~/.agents/skills is an example, not a universal host setting.",
+      "Keep the complete installed folder, references and license together. Identical reinstall is safe; conflicts are refused. A deliberate --replace keeps a dated backup."
+    ]
+  },
+  "repository_url": "https://github.com/michaeljabbour/amplifier-skill-build-tauri"
 }
