@@ -2,6 +2,8 @@
 
 Make the desktop app work beyond the dev server.
 
+Watch the [71-second film](https://michaeljabbour.github.io/amplifier-skill-build-tauri/#film): a sidecar that was running but not ready, and how the skill makes the desktop app wait for the real signal. The example in it is fictional.
+
 A Tauri 2 development skill for the boundary between webview, Rust and companion processes. Turn “it opens” into clear contracts for requests, streaming, permissions and shutdown.
 
 [Explore the site](https://michaeljabbour.github.io/amplifier-skill-build-tauri/) · [Read the method](skills/build-tauri/SKILL.md) · [Install guide](docs/INSTALL.md)

@@ -156,5 +156,12 @@
       "Keep the complete installed folder, references and license together. Identical reinstall is safe; conflicts are refused. A deliberate --replace keeps a dated backup."
     ]
   },
-  "repository_url": "https://github.com/michaeljabbour/amplifier-skill-build-tauri"
+  "repository_url": "https://github.com/michaeljabbour/amplifier-skill-build-tauri",
+  "film": {
+    "file": "build-tauri-film",
+    "seconds": 71,
+    "heading": "Running is not ready.",
+    "blurb": "In 71 seconds, Duffel the hound sleeps in the sidecar while the app waits three seconds, hopes, and sends the first import to nobody. Build with Tauri treats running and ready as two different things: the app holds the sidecar, waits for a ready signal with a deadline, and writes down what ready means, what failure shows and how it stops. Then you break it on purpose. Captions are on the player; a transcript is below.",
+    "note": "The photo importer and its sidecar contract are a fictional example. The film shows how the skill behaves; it does not report results."
+  }
 }

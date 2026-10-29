@@ -1,0 +1,11 @@
+Your desktop app is a motorbike. Duffel rides in the sidecar.
+You start both, wait three seconds, and hope.
+The timer pings. The first import goes out. Duffel sleeps on.
+On your machine, it worked every time.
+Build with Tauri treats running and ready as two different things.
+Your app holds the sidecar, and waits for a ready signal with a deadline.
+Out comes the contract: what ready means, what failure shows, how it stops.
+Then you break it on purpose: a wrong field, a slow start, a crash.
+The skill ships no desktop app. You test drive on your own machines.
+On screen: Running is not ready.
+Build with Tauri. Make the desktop app work beyond the dev server.

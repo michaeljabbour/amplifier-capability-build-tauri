@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-29 — Film
+
+- Add a 71-second film to the site, with captions, a transcript, a poster and a 15-second cut. The example in it is fictional, and it reports no results.
+
 ## 2026-10-29 — Evidence wording correction
 
 - Remove the unsupported claim that this repository includes an executable fictional contract fixture. The skill now explicitly identifies its reference-pattern scope and directs boundary checks into the actual app.
