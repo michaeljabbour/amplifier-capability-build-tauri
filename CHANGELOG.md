@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-29 — Evidence wording correction
+
+- Remove the unsupported claim that this repository includes an executable fictional contract fixture. The skill now explicitly identifies its reference-pattern scope and directs boundary checks into the actual app.
+- Preserve film assets and their published limit notes.
+
+
 ## 2026-10-28 — Clearer public introduction
 
 - Add a capability-specific benefit, worked artifact preview and first-use prompt.

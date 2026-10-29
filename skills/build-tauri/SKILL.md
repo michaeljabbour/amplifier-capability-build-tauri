@@ -28,6 +28,6 @@ Use [sidecar integration](references/tauri2-sidecar-integration/METHOD.md) and t
 
 ## Verify in layers
 
-Run formatting/type/build checks first, then IPC checks with deliberately mismatched fields and rejected permissions, then the actual desktop app on the target OS. Confirm release packaging contains the correct sidecar architecture. A dev server success does not establish the installed app works. Record which layer ran and which remains blocked. The fictional contract fixture in this repository checks its own declared boundary only; it is not a Tauri compiler or desktop acceptance test.
+Run formatting/type/build checks first, then IPC checks with deliberately mismatched fields and rejected permissions, then the actual desktop app on the target OS. Confirm release packaging contains the correct sidecar architecture. A dev server success does not establish the installed app works. Record which layer ran and which remains blocked. This repository supplies reference patterns, not an executable contract fixture, Tauri compiler or desktop acceptance test. Create boundary checks in the actual app and record what they exercise.
 
 Return changed interfaces, minimum permissions, version/source evidence, exact checks, and a reproducible unresolved case. Keep real-user usability and accessibility claims within the evidence actually collected.

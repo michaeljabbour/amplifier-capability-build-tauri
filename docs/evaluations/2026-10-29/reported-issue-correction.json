@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-29",
+  "issue": "The canonical skill referred to a fictional executable contract fixture that is not in the repository.",
+  "changes": [
+    "Correct the unsupported claim instead of adding a superficial fixture.",
+    "State that the repository provides reference patterns; app-boundary, compiler and desktop checks belong in the actual application."
+  ],
+  "checks": [
+    "Site build, link/download check, JavaScript syntax and empty portable install passed."
+  ],
+  "limits": "No Tauri app, compiler fixture or desktop acceptance run is supplied or claimed; film assets unchanged."
+}
