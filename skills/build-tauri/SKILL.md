@@ -31,3 +31,7 @@ Use [sidecar integration](references/tauri2-sidecar-integration/METHOD.md) and t
 Run formatting/type/build checks first, then IPC checks with deliberately mismatched fields and rejected permissions, then the actual desktop app on the target OS. Confirm release packaging contains the correct sidecar architecture. A dev server success does not establish the installed app works. Record which layer ran and which remains blocked. This repository supplies reference patterns, not an executable contract fixture, Tauri compiler or desktop acceptance test. Create boundary checks in the actual app and record what they exercise.
 
 Return changed interfaces, minimum permissions, version/source evidence, exact checks, and a reproducible unresolved case. Keep real-user usability and accessibility claims within the evidence actually collected.
+
+## Optional coaching checkpoint
+
+Read [the local coaching guide](references/coaching-session.v1.md) only when the person asks for practice or optional session bookkeeping. Keep direct artifact production available; agree a small budget, preserve the baseline and stop on goal, user exit or no meaningful gain.
