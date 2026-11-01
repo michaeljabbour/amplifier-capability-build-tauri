@@ -5,8 +5,8 @@
 Requires Git and Python 3.11+. From a terminal:
 
 ```sh
-git clone https://github.com/michaeljabbour/amplifier-skill-build-tauri.git
-cd amplifier-skill-build-tauri
+git clone https://github.com/michaeljabbour/amplifier-capability-build-tauri.git
+cd amplifier-capability-build-tauri
 python3 scripts/capability.py doctor
 python3 scripts/capability.py install --dest ~/.agents/skills
 ```
